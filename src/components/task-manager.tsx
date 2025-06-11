@@ -201,7 +201,7 @@ const TaskManager: React.FC<IProps> = ({ session }) => {
               created_at={task.created_at}
               title={task.title}
               description={task.description}
-              // refetchTask={fetchTasks}
+              refetchTask={fetchTasks}
             />
           ))
         ) : (

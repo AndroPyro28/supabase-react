@@ -7,7 +7,7 @@ interface IProps {
   description: string;
   created_at: string;
   image_url: string;
-  // refetchTask: () => Promise<void>;
+  refetchTask: () => Promise<void>;
 }
 
 const TaskItem: React.FC<IProps> = ({
@@ -16,7 +16,7 @@ const TaskItem: React.FC<IProps> = ({
   description,
   image_url,
   created_at,
-  // refetchTask,
+  refetchTask,
 }) => {
   const initialValue = { title: "", description: "" };
 
@@ -35,7 +35,7 @@ const TaskItem: React.FC<IProps> = ({
         console.log("TASK ADD ERROR RESPONSE", error.message);
         return;
       }
-      // refetchTask();
+      refetchTask();
       alert("Task Updated✅");
     } catch (error) {
       console.log("TASK UPDATE ERROR", error);
@@ -55,7 +55,7 @@ const TaskItem: React.FC<IProps> = ({
         console.log("TASK ADD ERROR RESPONSE", error.message);
         return;
       }
-      // refetchTask();
+      refetchTask();
       alert("Task Deleted✅");
     } catch (error) {
       console.log("TASK DELETE ERROR", error);
