@@ -6,15 +6,17 @@ interface IProps {
   title: string;
   description: string;
   created_at: string;
-  refetchTask: () => Promise<void>;
+  image_url: string;
+  // refetchTask: () => Promise<void>;
 }
 
 const TaskItem: React.FC<IProps> = ({
   id,
   title,
   description,
+  image_url,
   created_at,
-  refetchTask,
+  // refetchTask,
 }) => {
   const initialValue = { title: "", description: "" };
 
@@ -33,7 +35,7 @@ const TaskItem: React.FC<IProps> = ({
         console.log("TASK ADD ERROR RESPONSE", error.message);
         return;
       }
-      refetchTask();
+      // refetchTask();
       alert("Task Updated✅");
     } catch (error) {
       console.log("TASK UPDATE ERROR", error);
@@ -53,7 +55,7 @@ const TaskItem: React.FC<IProps> = ({
         console.log("TASK ADD ERROR RESPONSE", error.message);
         return;
       }
-      refetchTask();
+      // refetchTask();
       alert("Task Deleted✅");
     } catch (error) {
       console.log("TASK DELETE ERROR", error);
@@ -73,6 +75,15 @@ const TaskItem: React.FC<IProps> = ({
       <div>
         {!toggleUpdate && (
           <>
+            <img
+              src={image_url}
+              style={{
+                width: "100%",
+                height: "150px",
+                objectFit: "contain",
+              }}
+              alt="task image url"
+            />
             <h3>{title}</h3>
             <p>{description} </p>
           </>
@@ -116,7 +127,7 @@ const TaskItem: React.FC<IProps> = ({
               <button
                 type="button"
                 onClick={() => updateTask(id)}
-                style={{ padding: "0.5rem 1rem" }}
+                style={{ padding: "0.5rem 1rem", margin: "2px" }}
               >
                 Save
               </button>
@@ -124,7 +135,7 @@ const TaskItem: React.FC<IProps> = ({
               <button
                 type="button"
                 onClick={() => setToggleUpdate(false)}
-                style={{ padding: "0.5rem 1rem" }}
+                style={{ padding: "0.5rem 1rem", margin: "2px" }}
               >
                 Cancel
               </button>
